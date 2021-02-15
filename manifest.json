@@ -1,0 +1,12 @@
+{
+    "version": "0.1",
+    "requires" : ["pandas"],
+    "dumper" : {
+        "data_url" : ["https://reactome.org/download/current/interactors/reactome.homo_sapiens.interactions.tab-delimited.txt"],
+        "uncompress" : true
+    },
+    "uploader" : {
+        "parser" : "parser:load_reactome",
+        "on_duplicates" : "error"
+    }
+}
