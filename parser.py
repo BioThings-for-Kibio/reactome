@@ -14,8 +14,7 @@ def load_reactome(data_folder):
     for rec in dat:
         _id = id_ctr
         id_ctr = id_ctr + 1
-        # we'll remove space in keys to make queries easier. Also, lowercase is preferred
-        # for a BioThings API. We'll an helper function from BioThings SDK
+
         process_key = lambda k: k.replace(" ","_").lower()
         rec = dict_convert(rec,keyfn=process_key)
         # remove NaN values, not indexable
