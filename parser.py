@@ -6,16 +6,14 @@ from biothings import config
 logging = config.logger
 
 def load_reactome(data_folder):
-    infile = os.path.join(data_folder,"var_drug_ann.tsv")
+    infile = os.path.join(data_folder,"reactome.homo_sapiens.interactions.tab-delimited.txt")
     assert os.path.exists(infile)
     dat = pandas.read_csv(infile,sep="\t",squeeze=True,quoting=csv.QUOTE_NONE).to_dict(orient='records')
     results = {}
+    id_ctr = 0
     for rec in dat:
-
-        if not rec["Gene"] or pandas.isna(rec["Gene"]):
-            logging.warning("No gene information for annotation ID '%s'", rec["Annotation ID"])
-            continue
-        _id = re.match(".* \((.*?)\)",rec["Gene"]).groups()[0]
+        _id = id_ctr
+        id_ctr = id_ctr + 1
         # we'll remove space in keys to make queries easier. Also, lowercase is preferred
         # for a BioThings API. We'll an helper function from BioThings SDK
         process_key = lambda k: k.replace(" ","_").lower()
