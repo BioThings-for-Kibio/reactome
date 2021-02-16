@@ -19,5 +19,6 @@ def load_reactome(data_folder):
         rec = dict_convert(rec,keyfn=process_key)
         # remove NaN values, not indexable
         rec = dict_sweep(rec,vals=[np.nan])
-        doc = {"_id": _id, "annotations" : rec}
+        rec['pubmed_references'] = rec['pubmed_references'].split('|')
+        doc = {"_id": _id, "interactions" : rec}
         yield doc
