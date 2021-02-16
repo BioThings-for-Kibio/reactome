@@ -15,7 +15,7 @@ def load_reactome(data_folder):
         _id = str(id_ctr)
         id_ctr = id_ctr + 1
 
-        process_key = lambda k: k.replace(" ","_").lower()
+        process_key = lambda k: k.replace("# ","").replace(" ","_").lower()
         rec = dict_convert(rec,keyfn=process_key)
         # remove NaN values, not indexable
         rec = dict_sweep(rec,vals=[np.nan])
