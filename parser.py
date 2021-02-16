@@ -19,8 +19,5 @@ def load_reactome(data_folder):
         rec = dict_convert(rec,keyfn=process_key)
         # remove NaN values, not indexable
         rec = dict_sweep(rec,vals=[np.nan])
-        results.setdefault(_id,[]).append(rec)
-        
-    for _id,docs in results.items():
-        doc = {"_id": _id, "annotations" : docs}
+        doc = {"_id": _id, "annotations" : rec}
         yield doc
