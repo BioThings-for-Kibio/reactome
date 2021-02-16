@@ -12,7 +12,7 @@ def load_reactome(data_folder):
     results = {}
     id_ctr = 0
     for rec in dat:
-        _id = id_ctr
+        _id = str(id_ctr)
         id_ctr = id_ctr + 1
 
         process_key = lambda k: k.replace(" ","_").lower()
